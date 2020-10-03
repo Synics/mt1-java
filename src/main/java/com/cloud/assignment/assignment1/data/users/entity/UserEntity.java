@@ -36,7 +36,7 @@ public class UserEntity {
     private String password;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
     @Getter @Setter
     private Set<UserStatsEntity> userStatsEntity;
 

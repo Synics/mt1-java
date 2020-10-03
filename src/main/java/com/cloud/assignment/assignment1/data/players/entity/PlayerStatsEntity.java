@@ -14,10 +14,9 @@ public class PlayerStatsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
-    @JoinColumn(name = "player_id", referencedColumnName = "id")
+    @Column
     @Getter @Setter
-    private PlayerEntity player;
+    private Integer playerId;
 
     @Column
     @Getter @Setter

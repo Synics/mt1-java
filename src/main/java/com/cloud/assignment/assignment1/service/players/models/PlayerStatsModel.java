@@ -9,7 +9,7 @@ public class PlayerStatsModel {
     private Integer id;
 
     @Getter @Setter
-    private PlayerModel player;
+    private Integer playerId;
 
     @Getter @Setter
     private Integer week;
