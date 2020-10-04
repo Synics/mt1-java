@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "player_stats", schema = "players")
@@ -14,7 +15,7 @@ public class PlayerStatsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(name = "player_id")
     @Getter @Setter
     private Integer playerId;
 

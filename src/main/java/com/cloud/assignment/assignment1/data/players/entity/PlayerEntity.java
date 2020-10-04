@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "player", schema = "players")
@@ -29,4 +30,9 @@ public class PlayerEntity {
     @Column
     @Getter @Setter
     private String team;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "player_id", referencedColumnName = "id", updatable = false, insertable = false)
+    @Getter @Setter
+    private Set<PlayerStatsEntity> stats;
 }

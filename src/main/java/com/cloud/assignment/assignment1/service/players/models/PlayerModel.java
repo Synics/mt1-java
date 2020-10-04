@@ -3,6 +3,8 @@ package com.cloud.assignment.assignment1.service.players.models;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 public class PlayerModel {
     @Getter @Setter
     private Integer id;
@@ -18,4 +20,7 @@ public class PlayerModel {
 
     @Getter @Setter
     private String team;
+
+    @Getter @Setter
+    private List<PlayerStatsModel> stats;
 }
