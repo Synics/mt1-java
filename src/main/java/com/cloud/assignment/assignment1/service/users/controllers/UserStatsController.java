@@ -22,7 +22,7 @@ public class UserStatsController extends BaseController<UserStatsModel, UserStat
     }
 
     @CrossOrigin
-    @GetMapping(value = {"/{userId}"})
+    @GetMapping(value = {"/user-id/{userId}"})
     @ResponseBody
     public ResponseEntity<UserStatsModel> getUserStats(@PathVariable final Integer userId) {
         UserStatsModel userStats = new UserStatsModel();

@@ -40,7 +40,7 @@ public class UserEntity {
     @Getter @Setter
     private Set<UserStatsEntity> userStatsEntity;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Getter @Setter
     private UserTeamEntity userTeam;
 }

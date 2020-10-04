@@ -103,7 +103,8 @@ public class UserController extends BaseController<UserModel, UserEntity, Intege
                 this.userStatsService.create(userStatsModel);
             }
         }
-        return new ResponseEntity<>(this.service.update(mdl), HttpStatus.OK);
+        UserModel temp = this.service.getById(mdl.getId());
+        return new ResponseEntity<>(temp, HttpStatus.OK);
     }
 }
 
