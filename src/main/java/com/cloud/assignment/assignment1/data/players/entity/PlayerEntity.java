@@ -34,5 +34,5 @@ public class PlayerEntity {
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "player_id", referencedColumnName = "id", updatable = false, insertable = false)
     @Getter @Setter
-    private Set<PlayerStatsEntity> stats;
+    private Set<PlayerWeeklyStatsEntity> stats;
 }

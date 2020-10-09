@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "player_stats", schema = "players")
-public class PlayerStatsEntity {
+@Table(name = "player_weekly_stats", schema = "players")
+public class PlayerWeeklyStatsEntity {
     @Id
     @Column(insertable = false, updatable = false)
     @Getter @Setter
