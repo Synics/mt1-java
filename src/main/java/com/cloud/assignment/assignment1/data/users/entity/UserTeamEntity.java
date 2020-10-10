@@ -23,32 +23,32 @@ public class UserTeamEntity {
     @Getter @Setter
     private Integer userId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "quarterback_id", referencedColumnName = "id")
     @Getter @Setter
     private PlayerEntity quarterback;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "running_back1_id", referencedColumnName = "id")
     @Getter @Setter
     private PlayerEntity runningBack1;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "running_back2_id", referencedColumnName = "id")
     @Getter @Setter
     private PlayerEntity runningBack2;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wide_receiver1_id", referencedColumnName = "id")
     @Getter @Setter
     private PlayerEntity wideReceiver1;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wide_receiver2_id", referencedColumnName = "id")
     @Getter @Setter
     private PlayerEntity wideReceiver2;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tight_end_id", referencedColumnName = "id")
     @Getter @Setter
     private PlayerEntity tightEnd;

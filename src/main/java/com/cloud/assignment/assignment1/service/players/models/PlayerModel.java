@@ -22,5 +22,12 @@ public class PlayerModel {
     private String team;
 
     @Getter @Setter
-    private List<PlayerStatsModel> stats;
+    private List<PlayerWeeklyStatsModel> stats;
+
+    @Getter @Setter
+    private List<PlayerStatsModel> rushRecStats;
+
+    @Getter @Setter
+    private List<QBStatsModel> passingStats;
+
 }

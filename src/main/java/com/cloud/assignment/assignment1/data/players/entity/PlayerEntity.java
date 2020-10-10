@@ -6,6 +6,14 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
+@NamedEntityGraph( name="graph.playerEntity.partialFetch",
+        attributeNodes = {
+                @NamedAttributeNode("stats"),
+                @NamedAttributeNode("rushRecStats"),
+                @NamedAttributeNode("passingStats")
+        }
+)
+
 @Entity
 @Table(name = "player", schema = "players")
 public class PlayerEntity {
@@ -31,8 +39,18 @@ public class PlayerEntity {
     @Getter @Setter
     private String team;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "player_id", referencedColumnName = "id", updatable = false, insertable = false)
     @Getter @Setter
     private Set<PlayerWeeklyStatsEntity> stats;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id", referencedColumnName = "id", updatable = false, insertable = false)
+    @Getter @Setter
+    private Set<PlayerStatsEntity> rushRecStats;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "player_id", referencedColumnName = "id", updatable = false, insertable = false)
+    @Getter @Setter
+    private Set<QBStatsEntity> passingStats;
 }

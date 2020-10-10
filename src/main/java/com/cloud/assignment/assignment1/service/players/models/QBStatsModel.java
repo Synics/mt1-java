@@ -3,7 +3,7 @@ package com.cloud.assignment.assignment1.service.players.models;
 import lombok.Getter;
 import lombok.Setter;
 
-public class PlayerStatsModel {
+public class QBStatsModel {
     @Getter @Setter
     private Integer id;
 
@@ -26,17 +26,23 @@ public class PlayerStatsModel {
     private Integer gamesStarted;
 
     @Getter @Setter
-    private Integer rushing;
+    private Integer completions;
 
     @Getter @Setter
-    private Integer rushingYards;
+    private Integer attempts;
+
+    @Getter @Setter
+    private float completionPercentage;
+
+    @Getter @Setter
+    private Integer passingYards;
+
+    @Getter @Setter
+    private Integer interceptions;
 
     @Getter @Setter
     private Integer touchdowns;
 
     @Getter @Setter
-    private Integer receptions;
-
-    @Getter @Setter
-    private Integer receptionYards;
+    private float rating;
 }

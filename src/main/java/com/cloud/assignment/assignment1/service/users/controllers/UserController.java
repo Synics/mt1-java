@@ -2,7 +2,7 @@ package com.cloud.assignment.assignment1.service.users.controllers;
 
 import com.cloud.assignment.assignment1.data.users.entity.UserEntity;
 import com.cloud.assignment.assignment1.service.base.BaseController;
-import com.cloud.assignment.assignment1.service.players.models.PlayerStatsModel;
+import com.cloud.assignment.assignment1.service.players.models.PlayerWeeklyStatsModel;
 import com.cloud.assignment.assignment1.service.players.services.PlayerStatsService;
 import com.cloud.assignment.assignment1.service.users.models.UserStatsModel;
 import com.cloud.assignment.assignment1.service.users.services.UserService;
@@ -74,7 +74,7 @@ public class UserController extends BaseController<UserModel, UserEntity, Intege
         UserModel userModel = this.service.update(mdl);
 
         if(userModel.getUserTeam() != null && (userModel.getUserStats() == null || userModel.getUserStats().isEmpty())) {
-            List<List<PlayerStatsModel>> teamStats = new ArrayList<>();
+            List<List<PlayerWeeklyStatsModel>> teamStats = new ArrayList<>();
             List<UserStatsModel> userWeeklyStats = new ArrayList<>();
 
             teamStats.add(this.playerStatsService.getPlayerStats(userModel.getUserTeam().getQuarterback().getId()));
@@ -90,7 +90,7 @@ public class UserController extends BaseController<UserModel, UserEntity, Intege
                 userStatsModel.setWeek(week);
                 userStatsModel.setScore(0);
 
-                for(List<PlayerStatsModel> playerStatsList : teamStats) {
+                for(List<PlayerWeeklyStatsModel> playerStatsList : teamStats) {
                     userStatsModel.setScore(userStatsModel.getScore() + playerStatsList.get(week - 1).getScore());
                 }
                 userWeeklyStats.add(userStatsModel);

@@ -35,12 +35,12 @@ public class UserEntity {
     @Getter @Setter
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
     @Getter @Setter
     private Set<UserStatsEntity> userStatsEntity;
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Getter @Setter
     private UserTeamEntity userTeam;
 }
