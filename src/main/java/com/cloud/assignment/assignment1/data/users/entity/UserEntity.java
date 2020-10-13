@@ -2,10 +2,33 @@ package com.cloud.assignment.assignment1.data.users.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.repository.EntityGraph;
 
 import javax.persistence.*;
 import java.util.Set;
 
+@NamedEntityGraphs(
+        @NamedEntityGraph(
+                name = "graph.UserEntity.fullFetch",
+                attributeNodes = {
+                        @NamedAttributeNode(value = "userStats"),
+                        @NamedAttributeNode(value = "userTeam", subgraph = "subgraph.UserTeamEntity.fullFetch")
+                },
+                subgraphs = {
+                        @NamedSubgraph(
+                                name = "subgraph.UserTeamEntity.fullFetch",
+                                attributeNodes = {
+                                        @NamedAttributeNode(value = "quarterback"),
+                                        @NamedAttributeNode(value = "runningBack1"),
+                                        @NamedAttributeNode(value = "runningBack2"),
+                                        @NamedAttributeNode(value = "wideReceiver1"),
+                                        @NamedAttributeNode(value = "wideReceiver2"),
+                                        @NamedAttributeNode(value = "tightEnd")
+                                }
+                        ),
+                }
+        )
+)
 @Entity
 @Table(name = "users", schema = "usertable")
 public class UserEntity {
@@ -38,7 +61,7 @@ public class UserEntity {
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id", insertable = false, updatable = false)
     @Getter @Setter
-    private Set<UserStatsEntity> userStatsEntity;
+    private Set<UserStatsEntity> userStats;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Getter @Setter
