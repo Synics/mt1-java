@@ -20,6 +20,5 @@ public class PlayerController extends BaseController<PlayerModel, PlayerEntity, 
         super(service);
         this.service = service;
     }
-
 }
 

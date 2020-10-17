@@ -25,4 +25,8 @@ public class UserStatsEntity {
     @Column
     @Getter @Setter
     private Integer score;
+
+    @Column
+    @Getter @Setter
+    private Integer totalScore;
 }

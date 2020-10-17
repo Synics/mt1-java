@@ -89,6 +89,7 @@ public class UserController extends BaseController<UserModel, UserEntity, Intege
                 userStatsModel.setUserId(userModel.getId());
                 userStatsModel.setWeek(week);
                 userStatsModel.setScore(0);
+                userStatsModel.setTotalScore(0);
 
                 for(List<PlayerWeeklyStatsModel> playerStatsList : teamStats) {
                     userStatsModel.setScore(userStatsModel.getScore() + playerStatsList.get(week - 1).getScore());
@@ -98,7 +99,7 @@ public class UserController extends BaseController<UserModel, UserEntity, Intege
 
             for (UserStatsModel userStatsModel : userWeeklyStats) {
                 if (userStatsModel.getWeek() != 1) {
-                    userStatsModel.setScore(userStatsModel.getScore() + userWeeklyStats.get(userStatsModel.getWeek() - 2).getScore());
+                    userStatsModel.setTotalScore(userStatsModel.getScore() + userWeeklyStats.get(userStatsModel.getWeek() - 2).getScore());
                 }
                 this.userStatsService.create(userStatsModel);
             }
