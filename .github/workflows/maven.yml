@@ -24,7 +24,7 @@ jobs:
     - name: Create Maven Artifacts
       run: | 
             echo ls
-            mvn package
+            mvn package -Dmaven.test.skip=true
             echo ls development/artifacts
       
 #     - name: Login to Azure CLI
