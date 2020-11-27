@@ -23,7 +23,7 @@ jobs:
         java-version: 1.8
     - name: Create Maven Artifacts
       run: | 
-            mvn clean install > development/artifacts
+            mvn package > development/artifacts
             echo ls development/artifacts
       
 #     - name: Login to Azure CLI
