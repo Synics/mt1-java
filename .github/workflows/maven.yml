@@ -26,7 +26,7 @@ jobs:
             mvn clean install > development/artifacts
             echo ls development/artifacts
       
-    - name: Login to Azure CLI
+#     - name: Login to Azure CLI
     
     
     
