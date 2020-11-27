@@ -25,7 +25,7 @@ jobs:
       run: | 
             ls
             mvn package -Dmaven.test.skip=true
-            ls development/artifacts
+            ls
       
 #     - name: Login to Azure CLI
     
