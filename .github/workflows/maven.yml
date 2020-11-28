@@ -15,8 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - run: mkdir -p development/artifacts
-      
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
@@ -24,12 +22,27 @@ jobs:
     - name: Create Maven Artifacts
       run: mvn package -Dmaven.test.skip=true
 
+    - name: Azure Login
+      uses: Azure/login@v1.1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Kill Java Processes
+      run: az vm run-command invoke -g Cloud-Final-Project_group -n Cloud-Final-Project --command-id KillJavaProc --scripts "sudo pkill -f 'java -jar"
+    
+    - name: Delete Old Jar
+      run: az vm run-command invoke -g Cloud-Final-Project_group -n Cloud-Final-Project --command-id DeleteOldJar --scripts "sudo rm /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar"
+       
     - name: Add SSH
       uses: shimataro/ssh-key-action@v2.1.0
       with:
         key: ${{ secrets.AZURE_SSH_PEM }}
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
     
-    - name: upload new jar using SCP
+    - name: Upload New Jar
       run: scp target/assignment1-0.0.1-SNAPSHOT.jar azureuser@cloudfinalproject.eastus.cloudapp.azure.com:/home/azureuser/java
+    
+    - name: Run Jar
+      run: az vm run-command invoke -g Cloud-Final-Project_group -n Cloud-Final-Project --command-id RunJar --scripts "java -jar /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar"
+
     
