@@ -27,7 +27,7 @@ jobs:
     - name: Add SSH
       uses: shimataro/ssh-key-action@v2.1.0
       with:
-        key: ${{ secrets.AZURE_SSH_PEM }}
+        key: ${{ secrets.AZURE_SSH }}
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
     
     - name: upload new jar using SCP
