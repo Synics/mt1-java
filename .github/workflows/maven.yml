@@ -29,15 +29,15 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
     
     - name: Kill Java Processes
-      run: ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com 'sudo kill -9 $JAVA_APP_PID'
+      run: ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com "sudo kill -9 $JAVA_APP_PID"
     
     - name: Delete Old Jar
-      run: ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com 'sudo rm /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar'
+      run: ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com "sudo rm /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar"
     
     - name: Upload New Jar
       run: scp target/assignment1-0.0.1-SNAPSHOT.jar azureuser@cloudfinalproject.eastus.cloudapp.azure.com:/home/azureuser/java
     
     - name: Run Jar
-      run: ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com 'nohup java -jar /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar & JAVA_APP_PID=$!'
+      run: ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com "nohup java -jar /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar & JAVA_APP_PID=$!"
 
     
