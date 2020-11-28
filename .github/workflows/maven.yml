@@ -31,5 +31,5 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
     
     - name: upload new jar using SCP
-      run: scp target/assignment1-0.0.1-SNAPSHOT.jar azureuser@cloudfinalproject.eastus.cloudapp.azure.com:home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar
+      run: scp target/assignment1-0.0.1-SNAPSHOT.jar azureuser@cloudfinalproject.eastus.cloudapp.azure.com:home/azureuser/java
     
