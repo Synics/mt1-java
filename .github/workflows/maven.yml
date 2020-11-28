@@ -22,12 +22,14 @@ jobs:
       with:
         java-version: 1.8
     - name: Create Maven Artifacts
-      run: | 
-            ls
-            mvn package -Dmaven.test.skip=true
-            ls
-      
-#     - name: Login to Azure CLI
+      run: mvn package -Dmaven.test.skip=true
+
+    - name: Add SSH
+      uses: shimataro/ssh-key-action@v2.1.0
+      with:
+        key: ${{ secrets.AZURE_SSH_PEM }}
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
     
-    
+    - name: upload new jar using SCP
+      run: scp target/assignment1-0.0.1-SNAPSHOT.jar azureuser@cloudfinalproject.eastus.cloudapp.azure.com:home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar
     
