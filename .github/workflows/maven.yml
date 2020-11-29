@@ -38,6 +38,7 @@ jobs:
       run: scp target/assignment1-0.0.1-SNAPSHOT.jar azureuser@cloudfinalproject.eastus.cloudapp.azure.com:/home/azureuser/java
     
     - name: Run Jar
-      run: ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com "nohup java -jar /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar & JAVA_APP_PID=$!"
-
+      run: |
+            ssh azureuser@cloudfinalproject.eastus.cloudapp.azure.com "nohup java -jar /home/azureuser/java/assignment1-0.0.1-SNAPSHOT.jar &"
+            ssh -t azureuser@cloudfinalproject.eastus.cloudapp.azure.com "JAVA_APP_PID=$!"
     
